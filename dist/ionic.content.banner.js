@@ -30,7 +30,7 @@ angular.module('jett.ionic.content.banner', ['ionic']);
           },
           template:
           '<div class="content-banner-text-wrapper">' +
-            '<div ng-repeat="item in text track by $index" ng-class="{active: $index === currentIndex}" class="content-banner-text" ng-bind="item"></div>' +
+            '<div ui-sref="{{::goToState}}" ng-repeat="item in text track by $index" ng-class="{active: $index === currentIndex}" class="content-banner-text" ng-bind="item"></div>' +
           '</div>' +
           '<button class="content-banner-close button button-icon icon {{::icon}}" ng-click="close()"></button>'
         };
@@ -72,7 +72,8 @@ angular.module('jett.ionic.content.banner', ['ionic']);
             interval: 7000,
             type: 'info',
             $deregisterBackButton: angular.noop,
-            closeOnStateChange: true
+            closeOnStateChange: true,
+            goToState: null
           }, opts);
 
           // Compile the template
